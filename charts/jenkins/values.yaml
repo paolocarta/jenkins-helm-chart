@@ -327,21 +327,20 @@ controller:
     configUrls: []
     # - https://acme.org/jenkins.yaml
     # Remote URL:s for configuration files.
-    configScripts: {}
-    #  welcome-message: |
-    #    jenkins:
-    #      systemMessage: Welcome to our CI\CD server.  This Jenkins is configured and managed 'as code'.
-      # example-job: |
-      #   jobs:
-      #     - script: >
-      #         multibranchPipelineJob('jenkins-in-kubernetes-example-pipeline') {
-      #           branchSources {
-      #             git {
-      #               id('jenkins-in-kubernetes-example-pipeline')  
-      #               remote('https://github.com/verifa/jenkins-in-kubernetes-example-pipeline.git')
-      #             }
-      #           }
-      #         }
+    configScripts: 
+      #  welcome-message: |
+      #    jenkins:
+      #      systemMessage: Welcome to our CI\CD server.  This Jenkins is configured and managed 'as code'.
+      jobs:
+        - script: |
+            multibranchPipelineJob('configuration-as-code') {
+                branchSources {
+                    git {
+                        id = 'configuration-as-code'
+                        remote('https://github.com/paolocarta/code-with-quarkus')
+                    }
+                }
+            }
     # Allows adding to the top-level security JCasC section. For legacy,  default the chart includes apiToken configurations
     security:
       apiToken:
