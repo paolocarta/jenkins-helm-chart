@@ -244,7 +244,7 @@ controller:
     - git:5.0.0
     - configuration-as-code:1569.vb_72405b_80249
     - job-dsl:1.81
-    - ssh-server:3.275.v9e17c10f2571
+    # - ssh-server:3.275.v9e17c10f2571
 
   # Set to false to download the minimum required version of all dependencies.
   installLatestPlugins: true
@@ -331,16 +331,17 @@ controller:
       #  welcome-message: |
       #    jenkins:
       #      systemMessage: Welcome to our CI\CD server.  This Jenkins is configured and managed 'as code'.
-      jobs:
-        - script: |
-            multibranchPipelineJob('configuration-as-code') {
+      example-job: |
+        jobs:
+          - script: >
+              multibranchPipelineJob('jenkins-in-kubernetes-example-pipeline') {
                 branchSources {
-                    git {
-                        id = 'configuration-as-code'
-                        remote('https://github.com/paolocarta/code-with-quarkus')
-                    }
+                  git {
+                    id('jenkins-in-kubernetes-example-pipeline')  
+                    remote('https://github.com/paolocarta/code-with-quarkus')
+                  }
                 }
-            }
+              }
     # Allows adding to the top-level security JCasC section. For legacy,  default the chart includes apiToken configurations
     security:
       apiToken:
