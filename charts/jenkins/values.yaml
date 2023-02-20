@@ -18,8 +18,8 @@ renderHelmLabels: true
 controller:
   # Used for label app.kubernetes.io/component
   componentName: "jenkins-controller"
-  image: "jenkins/jenkins"
-  tag: "2.375.3-lts-centos7"
+  image: "clamer/custom-jenkins"
+  tag: "2.375.3-lts-centos7-v1"
   # tagLabel: jdk11
   imagePullPolicy: "Always"
   imagePullSecretName:
@@ -238,12 +238,12 @@ controller:
   #   targetPort: 9010 (Optional: Use to explicitly set targetPort if different from port)
 
   # List of plugins to be install during Jenkins controller start
-  installPlugins:
-    - kubernetes:3883.v4d70a_a_a_df034
-    - workflow-aggregator:590.v6a_d052e5a_a_b_5
-    - git:5.0.0
-    - configuration-as-code:1569.vb_72405b_80249
-    - job-dsl:1.81
+  installPlugins: []
+    # - kubernetes:3883.v4d70a_a_a_df034
+    # - workflow-aggregator:590.v6a_d052e5a_a_b_5
+    # - git:5.0.0
+    # - configuration-as-code:1569.vb_72405b_80249
+    # - job-dsl:1.81
     # - ssh-server:3.275.v9e17c10f2571
 
   # Set to false to download the minimum required version of all dependencies.
