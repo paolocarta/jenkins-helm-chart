@@ -4,12 +4,12 @@ metadata:
   name: nfs
 spec:
   capacity:
-    storage: 50Gi
+    storage: 200Gi
   accessModes:
     - ReadWriteMany
   nfs:
     server: nfs-server.nfs-servers.svc.cluster.local
-    path: "/maven-cache"
+    path: "/"
 
 ---
 kind: PersistentVolumeClaim
@@ -22,4 +22,4 @@ spec:
   storageClassName: ""
   resources:
     requests:
-      storage: 50Gi
+      storage: 200Gi
